@@ -1,3 +1,3 @@
-# ECoP
+# GradNCP
 
 Code coming soon
