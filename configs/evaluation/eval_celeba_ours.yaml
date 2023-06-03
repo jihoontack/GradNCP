@@ -1,0 +1,17 @@
+{
+  # meta-learning configs
+  "mode": "maml_full_evaluate_gradscale",
+  "inner_lr": 1.e-2,
+  "inner_steps_test": 16,
+  "test_batch_size": 8,
+  "dataset": 'celeba',
+  "sample_type": 'gradncp',
+  "data_ratio": 0.25,
+
+  # model configs
+  "decoder": 'siren',
+  "num_layers": 5,
+  "dim_in": 2,
+  "dim_out": 3,
+  "dim_hidden": 256,
+}

@@ -1,0 +1,22 @@
+{
+  # meta-learning configs
+  "mode": "maml",  ### UPDATED
+
+  "inner_steps": 4,
+  "inner_steps_test": 16,
+  "lr": 1.e-5,
+  "inner_lr": 1.e-2,
+  "batch_size": 8,
+  "test_batch_size": 2,
+  "outer_steps": 150000,
+  "dataset": 'celeba',
+  "no_date": True,
+
+  # model configs
+  "decoder": 'siren',
+  "num_layers": 5,
+  "dim_in": 2,
+  "dim_out": 3,
+  "dim_hidden": 256,
+
+}
