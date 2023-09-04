@@ -365,6 +365,15 @@ def get_meta_batch(P, task_data):
     if P.data_type == 'img':
         batch_size = task_data['imgs'].size(0)
         context = [task_data['imgs']]
+    elif P.data_type == 'video':
+        batch_size = task_data['videos'].size(0)
+        context = [task_data['videos']]
+    elif P.data_type == 'manifold':
+        batch_size = task_data['temp'].size(0)
+        context = [task_data['temp']]
+    elif P.data_type == 'audio':
+        batch_size = task_data['audio'].size(0)
+        context = [task_data['audio']]
     else:
         raise NotImplementedError()
     

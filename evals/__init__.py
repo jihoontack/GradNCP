@@ -1,5 +1,5 @@
 def setup(mode, P):
-    if mode in ['fomaml', 'maml']:
+    if mode in ['maml']:
         from evals.gradient_based.maml import test_model as test_func
     elif mode in ['maml_bootstrap_param']:
         from evals.gradient_based.maml_scale import test_model as test_func

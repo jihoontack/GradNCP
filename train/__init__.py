@@ -7,7 +7,7 @@ def setup(mode, P):
 
     fname = f'{P.dataset}_{P.decoder}_{mode}_bs{P.batch_size}_inner{P.inner_steps}'
 
-    if mode in ['fomaml', 'maml']:
+    if mode in ['maml']:
         from train.gradient_based.maml import train_step
         from train.gradient_based.maml import check
     elif mode in ['maml_bootstrap_param']:

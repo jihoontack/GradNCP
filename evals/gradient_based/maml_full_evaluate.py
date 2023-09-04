@@ -1,6 +1,7 @@
 import torch
 import torch.nn.functional as F
 
+from einops import rearrange
 import lpips
 from pytorch_msssim import ms_ssim, ssim
 
@@ -53,8 +54,8 @@ def test_model(P, wrapper, loader, steps, logger=None):
         with torch.no_grad():
             pred = wrapper(None, params).clamp(0, 1)
 
+        context = context[0]
         if P.data_type == 'img':
-            context = context[0]
             lpips_result = lpips_score((pred * 2 - 1), (context * 2 - 1)).mean()
             psnr_result = psnr(F.mse_loss(
                 context.view(batch_size, -1), pred.view(batch_size, -1), reduce=False
@@ -63,6 +64,33 @@ def test_model(P, wrapper, loader, steps, logger=None):
             log_ms_ssim_result = (-10. * torch.log10(1 - ms_ssim(pred, context, data_range=1.0) + 1e-24)).mean()
             ssim_result = ssim(pred, context, data_range=1.0).mean()
             log_ssim_result = (-10. * torch.log10(1 - ssim(pred, context, data_range=1.0) + 1e-24)).mean()
+
+        elif P.data_type == 'video':
+            pred = pred.contiguous()
+            context = context.contiguous()
+
+            psnr_result = psnr(F.mse_loss(
+                context.view(batch_size, -1), pred.view(batch_size, -1), reduce=False
+            ).mean(dim=1)).mean()
+
+            pred = rearrange(pred, 'b t c h w -> (b t) c h w')
+            context = rearrange(context, 'b t c h w -> (b t) c h w')
+
+            lpips_result = lpips_score((pred * 2 - 1), (context * 2 - 1)).mean()
+            ms_ssim_result = torch.Tensor([-1]) # not available
+            log_ms_ssim_result = torch.Tensor([-1]) # not available
+            ssim_result = ssim(pred, context, data_range=1.0).mean()
+            log_ssim_result = (-10. * torch.log10(1 - ssim(pred, context, data_range=1.0) + 1e-24)).mean()
+
+        elif P.data_type == 'manifold' or P.data_type == 'audio':
+            lpips_result = torch.Tensor([-1])
+            psnr_result = psnr(F.mse_loss(
+                context.view(batch_size, -1), pred.view(batch_size, -1), reduce=False
+            ).mean(dim=1)).mean()
+            ms_ssim_result = torch.Tensor([-1])
+            log_ms_ssim_result = torch.Tensor([-1])
+            ssim_result = torch.Tensor([-1])
+            log_ssim_result = torch.Tensor([-1])
 
         else:
             raise NotImplementedError()
