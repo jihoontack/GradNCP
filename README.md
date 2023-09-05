@@ -57,7 +57,7 @@ This code is mainly built upon the following repositories:
 - [PyTorch COIN++](https://github.com/EmilienDupont/coinpp)
 
 ## Citation
-```
+```bibtex
 @article{tack2023learning,
   title={Learning Large-scale Neural Fields via Context Pruned Meta-Learning},
   author={Tack, Jihoon and Kim, Subin and Yu, Sihyun and Lee, Jaeho and Shin, Jinwoo and Schwarz, Jonathan Richard},
