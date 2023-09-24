@@ -1,6 +1,6 @@
 # GradNCP
 
-Official PyTorch implementation of **["Learning Large-scale Neural Fields via Context Pruned Meta-Learning"](https://arxiv.org/abs/2302.00617)** by
+Official PyTorch implementation of **["Learning Large-scale Neural Fields via Context Pruned Meta-Learning"](https://arxiv.org/abs/2302.00617)** (NeurIPS 2023) by
 [Jihoon Tack](https://jihoontack.github.io/),
 [Subin Kim](https://subin-kim-cv.github.io/), 
 [Sihyun Yu](https://sihyun.me/), 
@@ -52,10 +52,10 @@ This code is mainly built upon [JAX Learnit](https://github.com/tancik/learnit),
 
 ## Citation
 ```bibtex
-@article{tack2023learning,
+@inproceedings{tack2023learning,
   title={Learning Large-scale Neural Fields via Context Pruned Meta-Learning},
   author={Tack, Jihoon and Kim, Subin and Yu, Sihyun and Lee, Jaeho and Shin, Jinwoo and Schwarz, Jonathan Richard},
-  journal={arXiv preprint arXiv:2302.00617},
+  booktitle={Advances in Neural Information Processing Systems},
   year={2023}
 }
 ```
