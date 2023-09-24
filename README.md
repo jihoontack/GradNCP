@@ -48,13 +48,7 @@ CUDA_VISIBLE_DEVICES=0 python eval.py --configs ./configs/evaluation/eval_celeba
 ```
 
 ## Reference
-This code is mainly built upon the following repositories:
-- [JAX Learnit](https://github.com/tancik/learnit)
-- [JAX Functa](https://github.com/deepmind/functa)
-- [PyTorch Siren](https://github.com/lucidrains/siren-pytorch)
-- [PyTorch MetaSDF](https://github.com/vsitzmann/metasdf)
-- [PyTorch Meta-SparseINR](https://github.com/jaeho-lee/MetaSparseINR)
-- [PyTorch COIN++](https://github.com/EmilienDupont/coinpp)
+This code is mainly built upon [JAX Learnit](https://github.com/tancik/learnit), [JAX Functa](https://github.com/deepmind/functa), [PyTorch Siren](https://github.com/lucidrains/siren-pytorch), [PyTorch MetaSDF](https://github.com/vsitzmann/metasdf), [PyTorch Meta-SparseINR](https://github.com/jaeho-lee/MetaSparseINR), and [PyTorch COIN++](https://github.com/EmilienDupont/coinpp) repositories.
 
 ## Citation
 ```bibtex
